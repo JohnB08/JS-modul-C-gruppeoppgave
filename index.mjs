@@ -2,12 +2,15 @@
 
 //importerer makeElements funksjonen fra makeElemenentsFunction modulen. Da kan jeg bruke den her.
 import { makeElements } from "./jsModules/makeElementsFunction.js";
+import { valueSelector } from "./jsModules/makeOptions.js";
 
 let testBtn = makeElements("button", {
   className: "testBtn",
   textContent: "testBtn",
 });
+
 document.body.appendChild(testBtn);
+document.body.appendChild(valueSelector);
 
 /* Tror så lenge vi blir enige om et design,
 kan vi fordele oppgavene inn i forskjellige JS moduler og CSS komponenter,
