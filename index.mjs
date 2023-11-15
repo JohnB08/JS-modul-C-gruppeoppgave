@@ -16,15 +16,16 @@ const todoInput = makeElements("input", {
 
 const submitBtn = makeElements("button", {
   textContent: "Add To-Do",
+  className: "submitBtn",
 });
-
-document.body.appendChild(todoInput);
-document.body.appendChild(valueSelector);
-document.body.appendChild(submitBtn);
+const inputContainer = makeElements("div", { className: "inputContainer" });
+inputContainer.appendChild(todoInput);
+inputContainer.appendChild(valueSelector);
+inputContainer.appendChild(submitBtn);
+document.body.appendChild(inputContainer);
 
 const todoList = makeElements("ul", { id: "todoList" });
 document.body.appendChild(todoList);
-
 
 //laga arary til object, sånn at det er lettere å lagre ting. kan loope gjennom via Object.keys()
 const todoObject = {};
@@ -38,6 +39,7 @@ submitBtn.onclick = () => {
       text: inputValue,
       difficulty: difficulty,
       dateObject: new Date(Date.now()),
+      complete: false,
     };
 
     displayTodo(todoObject[inputValue]);
