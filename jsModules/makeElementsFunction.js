@@ -1,6 +1,11 @@
 //Når vi lager en modul, tror jeg det er lurt på bruke JS docs for å gi en beskrivelse.
 
-/**funksjon for å lage html elementer basert på type, og et object med key/value par*/
+/**
+ * function to make HTML elements, and assign properties to said element.
+ * @param {*} type //type of html element
+ * @param {*} properties //object where key/value pairs are properties of the HTML element, JS reserved keywords DOES NOT WORK.
+ * @returns //the html element.
+ */
 function makeElements(type, properties) {
   const propertyArray = Object.entries(properties);
   const element = document.createElement(type);

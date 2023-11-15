@@ -11,44 +11,44 @@ så importere alt inn i index.js og style.css. fix ferdig arbeid! */
 const todoInput = makeElements("input", {
   type: "text",
   id: "todoInput",
-  placeholder: "Enter your to-do item"
+  placeholder: "Enter your to-do item",
 });
 
-const testBtn = makeElements("button", {
-  textContent: "Add To-Do"
+const submitBtn = makeElements("button", {
+  textContent: "Add To-Do",
 });
 
 document.body.appendChild(todoInput);
 document.body.appendChild(valueSelector);
-document.body.appendChild(testBtn);
+document.body.appendChild(submitBtn);
 
 const todoList = makeElements("ul", { id: "todoList" });
 document.body.appendChild(todoList);
 
 const todoListItems = [];
 
-testBtn.onclick = () => {
+submitBtn.onclick = () => {
   const inputValue = todoInput.value.trim();
   const difficulty = valueSelector.value;
 
   if (inputValue) {
-      const todoObject = {
-          text: inputValue,
-          difficulty: difficulty
-      };
+    const todoObject = {
+      text: inputValue,
+      difficulty: difficulty,
+    };
 
-      todoListItems.push(todoObject);
-      displayTodo(todoObject);
+    todoListItems.push(todoObject);
+    displayTodo(todoObject);
 
-      todoInput.value = "";
+    todoInput.value = "";
   } else {
-      alert("Enter To-Do item");
+    alert("Enter To-Do item");
   }
 };
 
-const displayTodo = todo => {
+const displayTodo = (todo) => {
   const listItem = makeElements("li", {
-      textContent: `${todo.text} - Difficulty: ${todo.difficulty}`
+    textContent: `${todo.text} - Difficulty: ${todo.difficulty}`,
   });
   todoList.appendChild(listItem);
 };
