@@ -46,9 +46,28 @@ submitBtn.onclick = () => {
   }
 };
 
-const displayTodo = (todo) => {
+//updatet displayTodo function for å adde remove knapp
+const displayTodo = todo => {
   const listItem = makeElements("li", {
-    textContent: `${todo.text} - Difficulty: ${todo.difficulty}`,
+      textContent: `${todo.text} - Difficulty: ${todo.difficulty} `
   });
+
+  const removeBtn = makeElements("button", {
+      textContent: "Remove",
+      className: "removeBtn"
+  });
+
+  listItem.appendChild(removeBtn);
   todoList.appendChild(listItem);
+
+  //fjerner fra både array og display
+  removeBtn.onclick = () => {
+      const index = todoListItems.indexOf(todo);
+      if (index > -1) {
+          todoListItems.splice(index, 1);
+          todoList.removeChild(listItem);
+
+          console.log("Updated todoListItems:", todoListItems);
+      }
+  };
 };
