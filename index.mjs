@@ -65,15 +65,10 @@ const displayTodo = (todo) => {
   });
   todoList.appendChild(listItem);
 };
-//summerer opp poeng 
+//summerer opp poeng
 const addPoints = () => {
-  if (taskCompleted === valueObject.enkelt) {
-    totalSum += valueObject.enkelt;
-  } else if (taskCompleted === valueObject.lett) {
-    totalSum += valueObject.lett;
-  } else if (taskCompleted === valueObject.medium) {
-    totalSum += valueObject.medium;
-  } else {
-    totalSum += valueObject.vanskelig;
-  }
+  Object.keys(todoObject).forEach((todo) => {
+    if (!todoObject[todo].complete) return;
+    else scoreSum += todoObject[todo].difficulty;
+  });
 };
