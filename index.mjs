@@ -1,8 +1,14 @@
 /* !!IMPORT MÅ STÅ ØVERST!! */
 
-//tenker index bare trenger html elementene.
+//importerer makeElements funksjonen fra makeElemenentsFunction modulen. Da kan jeg bruke den her.
+import { makeElements } from "./jsModules/makeElementsFunction.js";
 import { valueSelector } from "./jsModules/makeOptions.js";
-import { todoInput, todoList } from "./jsModules/makeInputs.js";
+import {
+  todoInput,
+  todoListItems,
+  displayTodo,
+  todoList,
+} from "./jsModules/makeInputs.js";
 import { submitBtn } from "./jsModules/submitBtn.js";
 /* Tror så lenge vi blir enige om et design,
 kan vi fordele oppgavene inn i forskjellige JS moduler og CSS komponenter,
