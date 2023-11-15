@@ -60,14 +60,14 @@ submitBtn.onclick = () => {
 };
 
 //updatet displayTodo function for å adde remove knapp
-const displayTodo = todo => {
+const displayTodo = (todo) => {
   const listItem = makeElements("li", {
-      textContent: `${todo.text} - Difficulty: ${todo.difficulty} `
+    textContent: `${todo.text} - Difficulty: ${todo.difficulty} `,
   });
 
   const removeBtn = makeElements("button", {
-      textContent: "Remove",
-      className: "removeBtn"
+    textContent: "Remove",
+    className: "removeBtn",
   });
 
   listItem.appendChild(removeBtn);
@@ -75,13 +75,11 @@ const displayTodo = todo => {
 
   //fjerner fra både array og display
   removeBtn.onclick = () => {
-      const index = todoListItems.indexOf(todo);
-      if (index > -1) {
-          todoListItems.splice(index, 1);
-          todoList.removeChild(listItem);
+    todo.complete = true;
+    todoList.removeChild(listItem);
+    console.log(todo);
 
-          console.log("Updated todoListItems:", todoListItems);
-      }
+    console.log("Updated todoLObject", todoObject);
   };
 };
 //summerer opp poeng
