@@ -30,12 +30,9 @@ const totalSum = makeElements("p", {
   textContent: `your total score is ${scoreSum}`,
 });
 
-document.body.appendChild(todoInput);
-document.body.appendChild(valueSelector);
-document.body.appendChild(submitBtn);
-document.body.appendChild(totalSum);
 const todoList = makeElements("ul", { id: "todoList" });
 document.body.appendChild(todoList);
+document.body.appendChild(totalSum);
 
 //laga arary til object, sånn at det er lettere å lagre ting. kan loope gjennom via Object.keys()
 const todoObject = {};
@@ -80,11 +77,12 @@ const displayTodo = (todo) => {
     todoList.removeChild(listItem);
     console.log(todo);
     console.log(scoreSum);
+    addPoints();
 
     console.log("Updated todoLObject", todoObject);
   };
 };
 //summerer opp poeng
 const addPoints = () => {
-
+  totalSum.textContent = `your total score is ${scoreSum}`;
 };
