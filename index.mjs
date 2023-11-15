@@ -19,9 +19,13 @@ const submitBtn = makeElements("button", {
   className: "submitBtn",
 });
 const inputContainer = makeElements("div", { className: "inputContainer" });
+const btnAndScoreContainer = makeElements("div", {
+  className: "btnAndScoreContainer",
+});
 inputContainer.appendChild(todoInput);
 inputContainer.appendChild(valueSelector);
-inputContainer.appendChild(submitBtn);
+btnAndScoreContainer.appendChild(submitBtn);
+inputContainer.appendChild(btnAndScoreContainer);
 document.body.appendChild(inputContainer);
 
 //shows total score of completed tasks
@@ -30,10 +34,7 @@ const totalSum = makeElements("p", {
   textContent: `your total score is ${scoreSum}`,
 });
 
-document.body.appendChild(todoInput);
-document.body.appendChild(valueSelector);
-document.body.appendChild(submitBtn);
-document.body.appendChild(totalSum);
+btnAndScoreContainer.appendChild(totalSum);
 const todoList = makeElements("ul", { id: "todoList" });
 document.body.appendChild(todoList);
 
@@ -80,11 +81,12 @@ const displayTodo = (todo) => {
     todoList.removeChild(listItem);
     console.log(todo);
     console.log(scoreSum);
+    addPoints();
 
     console.log("Updated todoLObject", todoObject);
   };
 };
 //summerer opp poeng
 const addPoints = () => {
-
+  totalSum.textContent = `your total score is ${scoreSum}`;
 };
