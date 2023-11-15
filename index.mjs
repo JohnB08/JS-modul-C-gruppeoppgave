@@ -19,9 +19,13 @@ const submitBtn = makeElements("button", {
   className: "submitBtn",
 });
 const inputContainer = makeElements("div", { className: "inputContainer" });
+const btnAndScoreContainer = makeElements("div", {
+  className: "btnAndScoreContainer",
+});
 inputContainer.appendChild(todoInput);
 inputContainer.appendChild(valueSelector);
-inputContainer.appendChild(submitBtn);
+btnAndScoreContainer.appendChild(submitBtn);
+inputContainer.appendChild(btnAndScoreContainer);
 document.body.appendChild(inputContainer);
 
 //shows total score of completed tasks
@@ -30,9 +34,9 @@ const totalSum = makeElements("p", {
   textContent: `your total score is ${scoreSum}`,
 });
 
+btnAndScoreContainer.appendChild(totalSum);
 const todoList = makeElements("ul", { id: "todoList" });
 document.body.appendChild(todoList);
-document.body.appendChild(totalSum);
 
 //laga arary til object, sånn at det er lettere å lagre ting. kan loope gjennom via Object.keys()
 const todoObject = {};

@@ -16,6 +16,11 @@ body {
   flex-direction: column;
   width: 250px;
 }
+.btnAndScoreContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .submitBtn {
   background-color: blue;
   color: white;
