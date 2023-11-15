@@ -25,21 +25,22 @@ document.body.appendChild(submitBtn);
 const todoList = makeElements("ul", { id: "todoList" });
 document.body.appendChild(todoList);
 
-const todoListItems = [];
 
+//laga arary til object, sånn at det er lettere å lagre ting. kan loope gjennom via Object.keys()
+const todoObject = {};
 submitBtn.onclick = () => {
   const inputValue = todoInput.value.trim();
   const difficulty = valueSelector.value;
 
   if (inputValue) {
-    const todoObject = {
+    todoObject[inputValue] = {
+      //laget en dateObject, sånn at vi kan hente ut hvilken dag og måned dette ble laget i via dateObject.getDate()
       text: inputValue,
       difficulty: difficulty,
+      dateObject: new Date(Date.now()),
     };
 
-    todoListItems.push(todoObject);
-    displayTodo(todoObject);
-
+    displayTodo(todoObject[inputValue]);
     todoInput.value = "";
   } else {
     alert("Enter To-Do item");
