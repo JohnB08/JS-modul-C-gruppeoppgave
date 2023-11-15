@@ -9,10 +9,12 @@
 body {
   display: grid;
   place-content: center;
+  padding-top: 5%;
 }
 .inputContainer {
   display: flex;
   flex-direction: column;
+  width: 250px;
 }
 .submitBtn {
   background-color: blue;
