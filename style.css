@@ -6,3 +6,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  display: grid;
+  place-content: center;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+.submitBtn {
+  background-color: blue;
+  color: white;
+  width: 80px;
+  height: 30px;
+}
+
+.valueSelector {
+  padding: 0.25em 1em;
+}
+
+.valueSelector:focus {
+  background-color: black;
+  color: white;
+}
