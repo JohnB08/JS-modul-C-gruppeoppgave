@@ -41,7 +41,7 @@ document.body.appendChild(todoList);
 const todoObject = {};
 submitBtn.onclick = () => {
   const inputValue = todoInput.value.trim();
-  const difficulty = valueSelector.value;
+  const difficulty = parseInt(valueSelector.value);
 
   if (inputValue) {
     todoObject[inputValue] = {
@@ -76,16 +76,15 @@ const displayTodo = (todo) => {
   //fjerner fra både array og display
   removeBtn.onclick = () => {
     todo.complete = true;
+    scoreSum += todo.difficulty;
     todoList.removeChild(listItem);
     console.log(todo);
+    console.log(scoreSum);
 
     console.log("Updated todoLObject", todoObject);
   };
 };
 //summerer opp poeng
 const addPoints = () => {
-  Object.keys(todoObject).forEach((todo) => {
-    if (!todoObject[todo].complete) return;
-    else scoreSum += todoObject[todo].difficulty;
-  });
+
 };
