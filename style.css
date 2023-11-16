@@ -26,12 +26,17 @@ body {
 }
 .submitBtn {
   background-color: rgb(12, 142, 25);
-  color: white;
+  color: rgb(242, 241, 241);
   padding: 0.75em 1.5em;
   font-weight: bold;
   border: none;
   border-radius: 0.5em;
   letter-spacing: 0.05em;
+  transition: 300ms;
+}
+.submitBtn:hover {
+  background-color: rgb(242, 241, 241);
+  color: rgb(12, 142, 25);
 }
 
 .valueSelector,
@@ -66,4 +71,10 @@ body {
   font-weight: bold;
   letter-spacing: 0.05em;
   color: rgb(242, 241, 241);
+  transition: 300ms;
+}
+
+.removeBtn:hover {
+  background: rgb(242, 241, 241);
+  color: rgb(96, 49, 150);
 }
