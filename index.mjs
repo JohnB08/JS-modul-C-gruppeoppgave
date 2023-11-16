@@ -15,7 +15,7 @@ const todoInput = makeElements("input", {
   placeholder: "Enter your to-do item",
 });
 const submitBtn = makeElements("button", {
-  textContent: "Add To-Do",
+  textContent: "ADD TO-DO",
   className: "submitBtn",
 });
 const inputContainer = makeElements("div", { className: "inputContainer" });
@@ -67,11 +67,11 @@ submitBtn.onclick = () => {
 //updatet displayTodo function for å adde remove knapp
 const displayTodo = (todo) => {
   const listItem = makeElements("li", {
-    textContent: `${todo.text} - Gjøres: ${todo.difficultyText}} `,
+    textContent: `${todo.text} - Gjøres: ${todo.difficultyText} `,
   });
 
   const removeBtn = makeElements("button", {
-    textContent: "Remove",
+    textContent: "REMOVE",
     className: "removeBtn",
   });
 
