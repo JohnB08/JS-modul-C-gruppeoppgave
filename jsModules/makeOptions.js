@@ -5,7 +5,7 @@ const valueSelector = makeElements("select", { className: "valueSelector" });
 Object.keys(valueObject).forEach((difficulty) => {
   const valueOption = makeElements("option", {
     className: "valueOption",
-    textContent: `${difficulty}`,
+    textContent: `${difficulty.split("_").join(" ")}`,
     value: valueObject[difficulty],
   });
   console.log(Object.keys(valueObject));

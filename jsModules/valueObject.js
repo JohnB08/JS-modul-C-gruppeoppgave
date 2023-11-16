@@ -1,8 +1,8 @@
 const valueObject = {
-  enkelt: 1,
-  lett: 10,
-  medium: 50,
-  vanskelig: 100,
+  i_måneden: 1,
+  i_uken: 10,
+  i_dag: 50,
+  fortest_mulig: 100,
 };
 
 export { valueObject };

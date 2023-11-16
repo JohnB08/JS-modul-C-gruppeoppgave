@@ -43,12 +43,19 @@ const todoObject = {};
 submitBtn.onclick = () => {
   const inputValue = todoInput.value.trim();
   const difficulty = parseInt(valueSelector.value);
+  const difficultyText = Object.keys(valueObject)
+    [Object.values(valueObject).indexOf(difficulty)].split("_")
+    .join(" ");
 
+  console.log(
+    Object.keys(valueObject)[Object.values(valueObject).indexOf(difficulty)]
+  );
   if (inputValue) {
     todoObject[inputValue] = {
       //laget en dateObject, sånn at vi kan hente ut hvilken dag og måned dette ble laget i via dateObject.getDate()
       text: inputValue,
       difficulty: difficulty,
+      difficultyText: difficultyText,
       dateObject: new Date(Date.now()),
       complete: false,
     };
@@ -63,7 +70,7 @@ submitBtn.onclick = () => {
 //updatet displayTodo function for å adde remove knapp
 const displayTodo = (todo) => {
   const listItem = makeElements("li", {
-    textContent: `${todo.text} - Difficulty: ${todo.difficulty} `,
+    textContent: `${todo.text} - Gjøres: ${todo.difficultyText}} `,
   });
 
   const removeBtn = makeElements("button", {
