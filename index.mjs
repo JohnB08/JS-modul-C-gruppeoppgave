@@ -64,33 +64,47 @@ submitBtn.onclick = () => {
   }
 };
 
-//updatet displayTodo function for å adde remove knapp
+//updatet displayTodo function for å adde remove knapp, addet completed knapp
 const displayTodo = (todo) => {
   const listItem = makeElements("li", {
     textContent: `${todo.text} - Gjøres: ${todo.difficultyText}} `,
   });
+
+  const completeBtn = makeElements("button", {
+    textContent: "Complete",
+    className: "completeBtn",
+});
+
 
   const removeBtn = makeElements("button", {
     textContent: "Remove",
     className: "removeBtn",
   });
 
+  listItem.appendChild(completeBtn);
   listItem.appendChild(removeBtn);
   todoList.appendChild(listItem);
 
+  //complete klikker som legger til poeng
+  completeBtn.onclick = () => {
+    if (!todo.complete) {
+        todo.complete = true;
+        scoreSum += todo.difficulty;
+        addPoints();
+        completeBtn.disabled = true;
+      }
+    };
   //fjerner fra både array og display
   removeBtn.onclick = () => {
-    todo.complete = true;
-    scoreSum += todo.difficulty;
+    delete todoObject[todo.text];
     todoList.removeChild(listItem);
-    console.log(todo);
-    console.log(scoreSum);
-    addPoints();
 
-    console.log("Updated todoLObject", todoObject);
-  };
+    console.log("Updated todoObject", todoObject);
+};
 };
 //summerer opp poeng
 const addPoints = () => {
   totalSum.textContent = `your total score is ${scoreSum}`;
 };
+
+
