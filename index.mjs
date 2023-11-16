@@ -47,9 +47,6 @@ submitBtn.onclick = () => {
     [Object.values(valueObject).indexOf(difficulty)].split("_")
     .join(" ");
 
-  console.log(
-    Object.keys(valueObject)[Object.values(valueObject).indexOf(difficulty)]
-  );
   if (inputValue) {
     todoObject[inputValue] = {
       //laget en dateObject, sånn at vi kan hente ut hvilken dag og måned dette ble laget i via dateObject.getDate()
