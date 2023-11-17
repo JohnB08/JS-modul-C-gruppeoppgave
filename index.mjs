@@ -98,7 +98,7 @@ const displayTodo = (todo) => {
   };
   //fjerner fra både array og display
   removeBtn.onclick = () => {
-    delete todoObject[todo];
+    delete todoObject[todo.text];
     listItem.remove();
     console.log("Updated todoObject", todoObject);
   };
