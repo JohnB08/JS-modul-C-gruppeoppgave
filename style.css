@@ -24,7 +24,8 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.submitBtn {
+.submitBtn,
+.completeBtn {
   background-color: rgb(12, 142, 25);
   color: rgb(242, 241, 241);
   padding: 0.75em 1.5em;
@@ -34,7 +35,8 @@ body {
   letter-spacing: 0.05em;
   transition: 300ms;
 }
-.submitBtn:hover {
+.submitBtn:hover,
+.completeBtn:hover {
   background-color: rgb(242, 241, 241);
   color: rgb(12, 142, 25);
 }
@@ -64,21 +66,26 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .removeBtn {
-  padding: 0.75em 1.5em;
+  padding: 1em 1em;
   border: 0;
   border-radius: 0.5em;
-  background: rgb(96, 49, 150);
-  font-size: 12px;
   font-weight: bold;
   letter-spacing: 0.05em;
-  color: rgb(242, 241, 241);
   transition: 300ms;
+  background-image: url(./svg/x-symbol-svgrepo-com.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: transparent;
+  position: absolute;
+  right: -10%;
 }
 
 .removeBtn:hover {
-  background: rgb(242, 241, 241);
-  color: rgb(96, 49, 150);
+  filter: invert(20%) sepia(100%) saturate(2741%) hue-rotate(354deg)
+    brightness(85%) contrast(92%);
 }
