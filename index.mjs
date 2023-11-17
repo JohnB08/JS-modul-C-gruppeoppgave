@@ -36,7 +36,9 @@ const totalSum = makeElements("p", {
 
 btnAndScoreContainer.appendChild(totalSum);
 const todoList = makeElements("ul", { id: "todoList" });
+const completedList = makeElements("ul", { id: "completedList" });
 document.body.appendChild(todoList);
+document.body.appendChild(completedList);
 
 //laga arary til object, sånn at det er lettere å lagre ting. kan loope gjennom via Object.keys()
 const todoObject = {};
@@ -69,12 +71,10 @@ const displayTodo = (todo) => {
   const listItem = makeElements("li", {
     textContent: `${todo.text} - Gjøres: ${todo.difficultyText} `,
   });
-
   const completeBtn = makeElements("button", {
     textContent: "Complete",
     className: "completeBtn",
-});
-
+  });
 
   const removeBtn = makeElements("button", {
     textContent: "REMOVE",
@@ -84,27 +84,26 @@ const displayTodo = (todo) => {
   listItem.appendChild(completeBtn);
   listItem.appendChild(removeBtn);
   todoList.appendChild(listItem);
-
   //complete klikker som legger til poeng
   completeBtn.onclick = () => {
     if (!todo.complete) {
-        todo.complete = true;
-        scoreSum += todo.difficulty;
-        addPoints();
-        completeBtn.disabled = true;
-      }
-    };
+      todo.complete = true;
+      scoreSum += todo.difficulty;
+      console.log(typeof todo.difficulty);
+      addPoints();
+      listItem.remove();
+      completedList.appendChild(listItem);
+      completeBtn.disabled = true;
+    }
+  };
   //fjerner fra både array og display
   removeBtn.onclick = () => {
-    delete todoObject[todo.text];
-    todoList.removeChild(listItem);
-
+    delete todoObject[todo];
+    listItem.remove();
     console.log("Updated todoObject", todoObject);
-};
+  };
 };
 //summerer opp poeng
 const addPoints = () => {
   totalSum.textContent = `your total score is ${scoreSum}`;
 };
-
-
