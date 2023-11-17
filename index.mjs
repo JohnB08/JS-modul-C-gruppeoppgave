@@ -77,10 +77,12 @@ const displayTodo = (todo) => {
   });
 
   const removeBtn = makeElements("button", {
-    textContent: "REMOVE",
     className: "removeBtn",
   });
-
+  const removeBtnSvg = makeElements("img", {
+    src: "./svg/x-symbol-sgvrepo-com.svg",
+  });
+  removeBtn.appendChild(removeBtnSvg);
   listItem.appendChild(completeBtn);
   listItem.appendChild(removeBtn);
   todoList.appendChild(listItem);
