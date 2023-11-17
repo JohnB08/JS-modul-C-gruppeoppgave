@@ -36,7 +36,8 @@ body {
   transition: 300ms;
 }
 .submitBtn:hover,
-.completeBtn:hover {
+.completeBtn:hover,
+.completeBtn:disabled {
   background-color: rgb(242, 241, 241);
   color: rgb(12, 142, 25);
 }

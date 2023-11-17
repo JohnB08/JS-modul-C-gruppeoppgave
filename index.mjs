@@ -72,7 +72,7 @@ const displayTodo = (todo) => {
     textContent: `${todo.text} - Gjøres: ${todo.difficultyText} `,
   });
   const completeBtn = makeElements("button", {
-    textContent: "Complete",
+    textContent: "COMPLETE",
     className: "completeBtn",
   });
 
@@ -92,6 +92,7 @@ const displayTodo = (todo) => {
       listItem.remove();
       completedList.appendChild(listItem);
       completeBtn.disabled = true;
+      completeBtn.textContent = "COMPLETED";
     }
   };
   //fjerner fra både array og display
