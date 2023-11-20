@@ -93,6 +93,12 @@ const sortBtn = makeElements("button", {
   textContent: "sort",
 });
 const sortSelector = makeElements("select", { className: "sortSelector" });
+const sortExplainOption = makeElements("option", {
+  textContent: "--Sort Options--",
+  selected: true,
+  disabled: true,
+});
+sortSelector.appendChild(sortExplainOption);
 const sortSelectorValues = ["Ascending", "Descending", "Urgency"];
 sortSelectorValues.forEach((option) => {
   const sortOption = makeElements("option", {
@@ -102,7 +108,7 @@ sortSelectorValues.forEach((option) => {
   sortSelector.appendChild(sortOption);
 });
 sortContainer.appendChild(sortSelector);
-sortContainer.appendChild(sortBtn);
+/* sortContainer.appendChild(sortBtn); */
 //updatet displayTodo function for å adde remove knapp, addet completed knapp
 const displayTodo = (todo) => {
   const listItem = makeElements("li", {
@@ -175,7 +181,7 @@ function sortArray(array, direction) {
   }
 }
 
-sortBtn.addEventListener("click", () => {
+sortSelector.addEventListener("change", () => {
   const oldActiveListItems = todoList.querySelectorAll("li");
   oldActiveListItems.forEach((item) => item.remove());
   let sortedArray = sortArray(Object.keys(todoObject), sortSelector.value);
