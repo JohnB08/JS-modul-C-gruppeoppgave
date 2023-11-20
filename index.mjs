@@ -28,7 +28,7 @@ const selectorLabel = makeElements("label", {
   className: "selectorLabel",
   textContent: "How fast must it be done?",
 });
-selectorLabel.setAttribute("for", "selectorLabel");
+selectorLabel.setAttribute("for", "valueSelector");
 const inputContainer = makeElements("div", { className: "inputContainer" });
 const btnAndScoreContainer = makeElements("div", {
   className: "btnAndScoreContainer",
