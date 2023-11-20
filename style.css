@@ -16,7 +16,7 @@ body {
 .inputContainer {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 600px;
   gap: 10px;
 }
 .btnAndScoreContainer {
