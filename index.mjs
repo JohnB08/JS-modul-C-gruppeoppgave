@@ -71,11 +71,13 @@ submitBtn.onclick = () => {
       dateObject: new Date(Date.now()),
       complete: false,
     };
-
+    inputLabel.classList.remove("errorMessage");
+    todoInput.classList.remove("redPlaceHolder");
     displayTodo(todoObject[inputValue]);
     todoInput.value = "";
   } else {
-    alert("Enter To-Do item");
+    inputLabel.classList.add("errorMessage");
+    todoInput.classList.add("redPlaceHolder");
   }
 };
 
