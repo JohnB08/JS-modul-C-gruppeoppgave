@@ -1,8 +1,8 @@
 const valueObject = {
-  i_måneden: 1,
-  i_uken: 10,
-  i_dag: 50,
-  fortest_mulig: 100,
+  during_the_month: 1,
+  during_the_week: 10,
+  today: 50,
+  ASAP: 100,
 };
 
 export { valueObject };

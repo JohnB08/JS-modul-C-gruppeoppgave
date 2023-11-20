@@ -14,15 +14,28 @@ const todoInput = makeElements("input", {
   id: "todoInput",
   placeholder: "Enter your to-do item",
 });
+
+const inputLabel = makeElements("label", {
+  className: "inputLabel",
+  textContent: "Enter your to-do item:",
+});
+inputLabel.setAttribute("for", "todoInput");
 const submitBtn = makeElements("button", {
   textContent: "ADD TO-DO",
   className: "submitBtn",
 });
+const selectorLabel = makeElements("label", {
+  className: "selectorLabel",
+  textContent: "How fast must it be done?",
+});
+selectorLabel.setAttribute("for", "selectorLabel");
 const inputContainer = makeElements("div", { className: "inputContainer" });
 const btnAndScoreContainer = makeElements("div", {
   className: "btnAndScoreContainer",
 });
+inputContainer.appendChild(inputLabel);
 inputContainer.appendChild(todoInput);
+inputContainer.appendChild(selectorLabel);
 inputContainer.appendChild(valueSelector);
 btnAndScoreContainer.appendChild(submitBtn);
 inputContainer.appendChild(btnAndScoreContainer);

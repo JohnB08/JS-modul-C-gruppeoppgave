@@ -1,7 +1,10 @@
 import { valueObject } from "./valueObject.js";
 import { makeElements } from "./makeElementsFunction.js";
 
-const valueSelector = makeElements("select", { className: "valueSelector" });
+const valueSelector = makeElements("select", {
+  className: "valueSelector",
+  id: "valueSelector",
+});
 Object.keys(valueObject).forEach((difficulty) => {
   const valueOption = makeElements("option", {
     className: "valueOption",
