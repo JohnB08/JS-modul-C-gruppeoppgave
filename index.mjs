@@ -88,10 +88,6 @@ function addToList() {
   }
 }
 
-const sortBtn = makeElements("button", {
-  className: "sortBtn",
-  textContent: "sort",
-});
 const sortSelector = makeElements("select", { className: "sortSelector" });
 const sortExplainOption = makeElements("option", {
   textContent: "--Sort Options--",
@@ -99,7 +95,13 @@ const sortExplainOption = makeElements("option", {
   disabled: true,
 });
 sortSelector.appendChild(sortExplainOption);
-const sortSelectorValues = ["Ascending", "Descending", "Urgency"];
+const sortSelectorValues = [
+  "Ascending",
+  "Descending",
+  "Urgency",
+  "Oldest",
+  "Newest",
+];
 sortSelectorValues.forEach((option) => {
   const sortOption = makeElements("option", {
     textContent: option,
@@ -157,13 +159,25 @@ document.addEventListener("keydown", (event) => {
 
 function sortArray(array, direction) {
   if (direction === "Ascending") {
-    return array.sort();
-  } else if (direction === "Descending") {
     return array.sort((a, b) => {
-      if (a < b) {
+      const A = a.toUpperCase();
+      const B = b.toUpperCase();
+      if (A < B) {
+        return -1;
+      }
+      if (A > B) {
         return 1;
       }
-      if (a > b) {
+      return 0;
+    });
+  } else if (direction === "Descending") {
+    return array.sort((a, b) => {
+      const A = a.toUpperCase();
+      const B = b.toUpperCase();
+      if (A < B) {
+        return 1;
+      }
+      if (A > B) {
         return -1;
       }
       return 0;
@@ -174,6 +188,26 @@ function sortArray(array, direction) {
         return 1;
       }
       if (todoObject[a].difficulty > todoObject[b].difficulty) {
+        return -1;
+      }
+      return 0;
+    });
+  } else if (direction === "Oldest") {
+    return array.sort((a, b) => {
+      if (todoObject[a].dateObject < todoObject[b].dateObject) {
+        return -1;
+      }
+      if (todoObject[a].dateObject > todoObject[b].dateObject) {
+        return 1;
+      }
+      return 0;
+    });
+  } else if (direction === "Newest") {
+    return array.sort((a, b) => {
+      if (todoObject[a].dateObject < todoObject[b].dateObject) {
+        return 1;
+      }
+      if (todoObject[a].dateObject > todoObject[b].dateObject) {
         return -1;
       }
       return 0;
