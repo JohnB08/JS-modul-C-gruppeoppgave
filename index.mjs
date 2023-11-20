@@ -15,26 +15,33 @@ const todoInput = makeElements("input", {
   placeholder: "Enter your to-do item",
 });
 
+//label for inputfield
 const inputLabel = makeElements("label", {
   className: "inputLabel",
   textContent: "Enter your to-do item:",
 });
+//setAttribute for å jobbe rundt "for" reserved keyword.
 inputLabel.setAttribute("for", "todoInput");
+
 const submitBtn = makeElements("button", {
   textContent: "ADD TO-DO",
   className: "submitBtn",
 });
+
 const selectorLabel = makeElements("label", {
   className: "selectorLabel",
   textContent: "How fast must it be done?",
 });
+//setAttribute for å jobbe rundt "for" reserved keyword.
 selectorLabel.setAttribute("for", "valueSelector");
+
 const inputContainer = makeElements("div", { className: "inputContainer" });
 const btnAndScoreContainer = makeElements("div", {
   className: "btnAndScoreContainer",
 });
 
 const sortContainer = makeElements("div", { className: "sortContainer" });
+
 inputContainer.appendChild(inputLabel);
 inputLabel.appendChild(todoInput);
 inputContainer.appendChild(selectorLabel);
@@ -51,6 +58,7 @@ const totalSum = makeElements("p", {
 });
 
 btnAndScoreContainer.appendChild(totalSum);
+
 const todoList = makeElements("ul", { id: "todoList" });
 const completedList = makeElements("ul", { id: "completedList" });
 document.body.appendChild(todoList);
@@ -61,7 +69,11 @@ const todoObject = {};
 submitBtn.onclick = () => {
   addToList();
 };
-
+/**
+ * Funksjon som lager et object i todoObject
+ * og lager et li element basert på det objektet.
+ * Viser feil til bruker hvis feltet er tomt når knappen trykkes.
+ */
 function addToList() {
   const inputValue = todoInput.value.trim();
   const difficulty = parseInt(valueSelector.value);
@@ -89,12 +101,14 @@ function addToList() {
 }
 
 const sortSelector = makeElements("select", { className: "sortSelector" });
+//en placeholder sort option som bare forklarer hva select gjør.
 const sortExplainOption = makeElements("option", {
   textContent: "--Sort Options--",
   selected: true,
   disabled: true,
 });
 sortSelector.appendChild(sortExplainOption);
+//alle values som sort select kan ha.
 const sortSelectorValues = [
   "Ascending",
   "Descending",
@@ -112,6 +126,13 @@ sortSelectorValues.forEach((option) => {
 sortContainer.appendChild(sortSelector);
 /* sortContainer.appendChild(sortBtn); */
 //updatet displayTodo function for å adde remove knapp, addet completed knapp
+
+/**
+ * funksjon som tar inn et objekt, og lager li basert på objektet.
+ * @param {*} todo
+ * appender li til ul
+ * lager knapper som kan manipulere li på siden
+ */
 const displayTodo = (todo) => {
   const listItem = makeElements("li", {
     textContent: `${todo.text} - Done ${todo.difficultyText} `,
@@ -157,7 +178,14 @@ document.addEventListener("keydown", (event) => {
   addToList();
 });
 
+/**
+ * Funksjon som sorterer en array basert på input
+ * @param {*} array arrayet som sorteres.
+ * @param {*} direction retning det skal sorteres, i string.
+ * @returns sorterte arrayet basert på retning.
+ */
 function sortArray(array, direction) {
+  //sorterer alfabetisk a-z
   if (direction === "Ascending") {
     return array.sort((a, b) => {
       const A = a.toUpperCase();
@@ -171,6 +199,7 @@ function sortArray(array, direction) {
       return 0;
     });
   } else if (direction === "Descending") {
+    //sorterer alfabetisk z-a
     return array.sort((a, b) => {
       const A = a.toUpperCase();
       const B = b.toUpperCase();
@@ -183,6 +212,7 @@ function sortArray(array, direction) {
       return 0;
     });
   } else if (direction === "Urgency") {
+    //sorterer basert på scorevalue høy-lav
     return array.sort((a, b) => {
       if (todoObject[a].difficulty < todoObject[b].difficulty) {
         return 1;
@@ -193,6 +223,7 @@ function sortArray(array, direction) {
       return 0;
     });
   } else if (direction === "Oldest") {
+    //sorterer basert på dato eldst-yngst
     return array.sort((a, b) => {
       if (todoObject[a].dateObject < todoObject[b].dateObject) {
         return -1;
@@ -203,6 +234,7 @@ function sortArray(array, direction) {
       return 0;
     });
   } else if (direction === "Newest") {
+    //sorterer basert på dato yngst-eldst
     return array.sort((a, b) => {
       if (todoObject[a].dateObject < todoObject[b].dateObject) {
         return 1;
@@ -215,6 +247,7 @@ function sortArray(array, direction) {
   }
 }
 
+//Eventlistener på select element som lytter etter endring.
 sortSelector.addEventListener("change", () => {
   const oldActiveListItems = todoList.querySelectorAll("li");
   oldActiveListItems.forEach((item) => item.remove());
