@@ -56,6 +56,10 @@ document.body.appendChild(completedList);
 //laga arary til object, sånn at det er lettere å lagre ting. kan loope gjennom via Object.keys()
 const todoObject = {};
 submitBtn.onclick = () => {
+  addToList();
+};
+
+function addToList() {
   const inputValue = todoInput.value.trim();
   const difficulty = parseInt(valueSelector.value);
   const difficultyText = Object.keys(valueObject)
@@ -79,8 +83,16 @@ submitBtn.onclick = () => {
     inputLabel.classList.add("errorMessage");
     todoInput.classList.add("redPlaceHolder");
   }
-};
+}
 
+const sortBtn = makeElements("button", {
+  className: "sortBtn",
+  textContent: "sort",
+});
+btnAndScoreContainer.appendChild(sortBtn);
+sortBtn.addEventListener("click", () => {
+  console.log(Object.keys(todoObject).sort());
+});
 //updatet displayTodo function for å adde remove knapp, addet completed knapp
 const displayTodo = (todo) => {
   const listItem = makeElements("li", {
@@ -121,3 +133,8 @@ const displayTodo = (todo) => {
 const addPoints = () => {
   totalSum.textContent = `your total score is ${scoreSum}`;
 };
+
+document.addEventListener("keydown", (event) => {
+  if (event.code != "Enter") return;
+  addToList();
+});
