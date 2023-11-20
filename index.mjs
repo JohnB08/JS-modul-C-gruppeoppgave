@@ -33,10 +33,13 @@ const inputContainer = makeElements("div", { className: "inputContainer" });
 const btnAndScoreContainer = makeElements("div", {
   className: "btnAndScoreContainer",
 });
+
+const sortContainer = makeElements("div", { className: "sortContainer" });
 inputContainer.appendChild(inputLabel);
 inputLabel.appendChild(todoInput);
 inputContainer.appendChild(selectorLabel);
 selectorLabel.appendChild(valueSelector);
+inputContainer.appendChild(sortContainer);
 btnAndScoreContainer.appendChild(submitBtn);
 inputContainer.appendChild(btnAndScoreContainer);
 document.body.appendChild(inputContainer);
@@ -89,10 +92,17 @@ const sortBtn = makeElements("button", {
   className: "sortBtn",
   textContent: "sort",
 });
-btnAndScoreContainer.appendChild(sortBtn);
-sortBtn.addEventListener("click", () => {
-  console.log(Object.keys(todoObject).sort());
+const sortSelector = makeElements("select", { className: "sortSelector" });
+const sortSelectorValues = ["Ascending", "Descending", "Urgency"];
+sortSelectorValues.forEach((option) => {
+  const sortOption = makeElements("option", {
+    textContent: option,
+    value: option,
+  });
+  sortSelector.appendChild(sortOption);
 });
+sortContainer.appendChild(sortSelector);
+sortContainer.appendChild(sortBtn);
 //updatet displayTodo function for å adde remove knapp, addet completed knapp
 const displayTodo = (todo) => {
   const listItem = makeElements("li", {
@@ -137,4 +147,39 @@ const addPoints = () => {
 document.addEventListener("keydown", (event) => {
   if (event.code != "Enter") return;
   addToList();
+});
+
+function sortArray(array, direction) {
+  if (direction === "Ascending") {
+    return array.sort();
+  } else if (direction === "Descending") {
+    return array.sort((a, b) => {
+      if (a < b) {
+        return 1;
+      }
+      if (a > b) {
+        return -1;
+      }
+      return 0;
+    });
+  } else if (direction === "Urgency") {
+    return array.sort((a, b) => {
+      if (todoObject[a].difficulty < todoObject[b].difficulty) {
+        return 1;
+      }
+      if (todoObject[a].difficulty > todoObject[b].difficulty) {
+        return -1;
+      }
+      return 0;
+    });
+  }
+}
+
+sortBtn.addEventListener("click", () => {
+  const oldActiveListItems = todoList.querySelectorAll("li");
+  oldActiveListItems.forEach((item) => item.remove());
+  let sortedArray = sortArray(Object.keys(todoObject), sortSelector.value);
+  sortedArray.forEach((element) => {
+    displayTodo(todoObject[element]);
+  });
 });
