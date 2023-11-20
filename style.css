@@ -85,13 +85,15 @@ body {
   position: relative;
 }
 
-#todoList .listItem .listContent {
+#todoList .listItem .listContent,
+#completedList .listItem .listContent {
   width: 40%;
   line-height: 115%;
   letter-spacing: 0.05rem;
 }
 
-#todoList .listItem .listUrgency {
+#todoList .listItem .listUrgency,
+#completedList .listItem .listUrgency {
   font-weight: bold;
 }
 

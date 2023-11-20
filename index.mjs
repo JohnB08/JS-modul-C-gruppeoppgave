@@ -262,6 +262,6 @@ sortSelector.addEventListener("change", () => {
   oldActiveListItems.forEach((item) => item.remove());
   let sortedArray = sortArray(Object.keys(todoObject), sortSelector.value);
   sortedArray.forEach((element) => {
-    displayTodo(todoObject[element]);
+    if (!todoObject[element].complete) displayTodo(todoObject[element]);
   });
 });
