@@ -88,7 +88,7 @@ body {
 #todoList .listItem .listContent {
   width: 40%;
   line-height: 115%;
-  letter-spacing: 105%;
+  letter-spacing: 0.05rem;
 }
 
 #todoList .listItem .listUrgency {
