@@ -16,7 +16,7 @@ body {
 .inputContainer {
   display: flex;
   flex-direction: column;
-  width: 600px;
+  width: 80dvw;
   gap: 10px;
 }
 .btnAndScoreContainer {
@@ -36,6 +36,7 @@ body {
   color: rgb(242, 241, 241);
   padding: 0.75em 1.5em;
   font-weight: bold;
+  font-size: inherit;
   border: none;
   border-radius: 0.5em;
   letter-spacing: 0.05em;
@@ -81,6 +82,7 @@ body {
   border: 0;
   border-radius: 0.5em;
   font-weight: bold;
+  font-size: inherit;
   letter-spacing: 0.05em;
   transition: 300ms;
   background-image: url(./svg/x-symbol-svgrepo-com.svg);
@@ -95,4 +97,15 @@ body {
 .removeBtn:hover {
   filter: invert(20%) sepia(100%) saturate(2741%) hue-rotate(354deg)
     brightness(85%) contrast(92%);
+}
+
+@media only screen and (max-width: 450px) {
+  body {
+    font-size: 10px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  body {
+    font-size: 20px;
+  }
 }
