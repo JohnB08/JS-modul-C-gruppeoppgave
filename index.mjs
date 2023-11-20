@@ -34,9 +34,9 @@ const btnAndScoreContainer = makeElements("div", {
   className: "btnAndScoreContainer",
 });
 inputContainer.appendChild(inputLabel);
-inputContainer.appendChild(todoInput);
+inputLabel.appendChild(todoInput);
 inputContainer.appendChild(selectorLabel);
-inputContainer.appendChild(valueSelector);
+selectorLabel.appendChild(valueSelector);
 btnAndScoreContainer.appendChild(submitBtn);
 inputContainer.appendChild(btnAndScoreContainer);
 document.body.appendChild(inputContainer);

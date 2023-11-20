@@ -11,19 +11,26 @@ body {
   display: grid;
   place-content: center;
   padding-top: 5%;
-  gap: 10px;
+  gap: 2rem;
 }
 .inputContainer {
   display: flex;
   flex-direction: column;
   width: 80dvw;
-  gap: 10px;
+  gap: 2rem;
 }
 .btnAndScoreContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.inputLabel,
+.selectorLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .errorMessage {
   color: red;
 }
