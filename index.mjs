@@ -135,13 +135,22 @@ sortContainer.appendChild(sortSelector);
  */
 const displayTodo = (todo) => {
   const listItem = makeElements("li", {
-    textContent: `${todo.text} - Done ${todo.difficultyText} `,
+    className: "listItem",
   });
+  const listContent = makeElements("p", {
+    textContent: todo.text,
+    className: "listContent",
+  });
+  const listUrgency = makeElements("p", {
+    textContent: ` - Done: ${todo.difficultyText}`,
+    className: "listUrgency",
+  });
+  listItem.append(listContent, listUrgency);
   const completeBtn = makeElements("button", {
     textContent: "COMPLETE",
     className: "completeBtn",
   });
-
+  /* `${todo.text} - Done ${todo.difficultyText} ` */
   const removeBtn = makeElements("button", {
     className: "removeBtn",
   });

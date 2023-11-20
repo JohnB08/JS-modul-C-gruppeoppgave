@@ -74,14 +74,25 @@ body {
   gap: 10px;
   list-style: none;
   border-top: 3px solid rgb(11, 11, 11);
+  max-width: 80dvw;
 }
 
 #todoList > *,
 #completedList > * {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   position: relative;
+}
+
+#todoList .listItem .listContent {
+  width: 40%;
+  line-height: 115%;
+  letter-spacing: 105%;
+}
+
+#todoList .listItem .listUrgency {
+  font-weight: bold;
 }
 
 .removeBtn {
@@ -98,7 +109,7 @@ body {
   background-position: center;
   background-color: transparent;
   position: absolute;
-  right: -10%;
+  right: -5%;
 }
 
 .removeBtn:hover {
