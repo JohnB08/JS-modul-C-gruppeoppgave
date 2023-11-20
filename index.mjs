@@ -82,7 +82,7 @@ submitBtn.onclick = () => {
 //updatet displayTodo function for å adde remove knapp, addet completed knapp
 const displayTodo = (todo) => {
   const listItem = makeElements("li", {
-    textContent: `${todo.text} - Gjøres: ${todo.difficultyText} `,
+    textContent: `${todo.text} - Done ${todo.difficultyText} `,
   });
   const completeBtn = makeElements("button", {
     textContent: "COMPLETE",
