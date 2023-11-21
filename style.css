@@ -73,8 +73,11 @@ body {
   flex-direction: column;
   gap: 10px;
   list-style: none;
-  border-top: 3px solid rgb(11, 11, 11);
   max-width: 80dvw;
+}
+
+#completedList {
+  border-top: 3px solid rgb(11, 11, 11);
 }
 
 #todoList > *,
