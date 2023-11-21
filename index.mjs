@@ -265,3 +265,15 @@ sortSelector.addEventListener("change", () => {
     if (!todoObject[element].complete) displayTodo(todoObject[element]);
   });
 });
+//achievement reward icon
+const achievementDiary = makeElements("button", {
+  className: "achievementTasks",
+  textContent: "Achievements",
+
+})
+document.body.appendChild(achievementDiary)
+
+const achievementsComplete = {
+  
+
+}
