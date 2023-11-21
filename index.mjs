@@ -65,9 +65,10 @@ document.body.appendChild(todoList);
 document.body.appendChild(completedList);
 
 //laga arary til object, sånn at det er lettere å lagre ting. kan loope gjennom via Object.keys()
-const todoObject = {};
+let todoObject = {};
 submitBtn.onclick = () => {
   addToList();
+  saveToLocalStorage();
 };
 /**
  * Funksjon som lager et object i todoObject
@@ -150,6 +151,16 @@ const displayTodo = (todo) => {
     textContent: "COMPLETE",
     className: "completeBtn",
   });
+
+  if (!todo.complete) {
+    listItem.appendChild(completeBtn);
+    todoList.appendChild(listItem);
+  } else {
+    completeBtn.disabled = true;
+    completeBtn.textContent = "COMPLETED";
+    listItem.appendChild(completeBtn);
+    completedList.appendChild(listItem);
+  }
   /* `${todo.text} - Done ${todo.difficultyText} ` */
   const removeBtn = makeElements("button", {
     className: "removeBtn",
@@ -158,6 +169,7 @@ const displayTodo = (todo) => {
   listItem.appendChild(removeBtn);
   todoList.appendChild(listItem);
   //complete klikker som legger til poeng
+  //added logikk for localstorage complete/ikke complete
   completeBtn.onclick = () => {
     if (!todo.complete) {
       todo.complete = true;
@@ -168,13 +180,16 @@ const displayTodo = (todo) => {
       completedList.appendChild(listItem);
       completeBtn.disabled = true;
       completeBtn.textContent = "COMPLETED";
+      saveToLocalStorage();
     }
+    
   };
   //fjerner fra både array og display
   removeBtn.onclick = () => {
     delete todoObject[todo.text];
     listItem.remove();
     console.log("Updated todoObject", todoObject);
+    saveToLocalStorage();
   };
 };
 //summerer opp poeng
@@ -265,3 +280,27 @@ sortSelector.addEventListener("change", () => {
     if (!todoObject[element].complete) displayTodo(todoObject[element]);
   });
 });
+
+const saveToLocalStorage = () => {
+  const dataToSave = {
+    todos: todoObject,
+    score: scoreSum
+  };
+  console.log("Saver Local Storage:", dataToSave);
+  localStorage.setItem('todoData', JSON.stringify(dataToSave));
+};
+
+//kanskje bedre med ?? operator?
+const loadFromLocalStorage = () => {
+  const savedData = JSON.parse(localStorage.getItem('todoData')) || {};
+
+  todoObject = savedData.todos || {};
+  scoreSum = savedData.score || 0;
+  totalSum.textContent = `Your total score is ${scoreSum}`;
+
+  Object.entries(todoObject).forEach(([key, todo]) => {
+    displayTodo(todo, key);
+  });
+};
+
+loadFromLocalStorage();
