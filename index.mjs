@@ -323,9 +323,10 @@ const achievementsComplete = {
     complete: false,
   },
 };
-achievementsComplete.firstToDo.complete = true;
-if (firstToDo.complete === false) {
-  return;
-} else {
-  document.body.appendChild(achievementComplete.firstToDo.icon);
-}
+const achievementChecker = () => {
+  if (achievementsComplete.firstToDo.complete === false) {
+    return;
+  } else {
+    document.body.appendChild(achievementComplete.firstToDo.icon);
+  }
+};
