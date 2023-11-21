@@ -304,6 +304,4 @@ function loadFromLocalStorage() {
   Object.keys(todoObject).forEach((todo) => {
     displayTodo(todoObject[todo]);
   });
-  console.log(Object.keys(todoObject));
-  console.log(todoObject);
 }
