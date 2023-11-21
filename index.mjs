@@ -47,7 +47,8 @@ inputLabel.appendChild(todoInput);
 inputContainer.appendChild(selectorLabel);
 selectorLabel.appendChild(valueSelector);
 inputContainer.appendChild(sortContainer);
-btnAndScoreContainer.appendChild(submitBtn);
+sortContainer.appendChild(submitBtn);
+btnAndScoreContainer.appendChild(sortContainer);
 inputContainer.appendChild(btnAndScoreContainer);
 document.body.appendChild(inputContainer);
 
