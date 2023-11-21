@@ -72,7 +72,6 @@ loadFromLocalStorage();
 
 submitBtn.onclick = () => {
   addToList();
-  saveToLocalStorage();
 };
 /**
  * Funksjon som lager et object i todoObject
@@ -80,7 +79,6 @@ submitBtn.onclick = () => {
  * Viser feil til bruker hvis feltet er tomt når knappen trykkes.
  */
 function addToList() {
-  console.log(typeof newDate);
   const inputValue = todoInput.value.trim();
   const difficulty = parseInt(valueSelector.value);
   const difficultyText = Object.keys(valueObject)
@@ -98,6 +96,7 @@ function addToList() {
     };
     inputLabel.classList.remove("errorMessage");
     todoInput.classList.remove("redPlaceHolder");
+    saveToLocalStorage();
     displayTodo(todoObject[inputValue]);
     todoInput.value = "";
   } else {
@@ -105,7 +104,6 @@ function addToList() {
     todoInput.classList.add("redPlaceHolder");
   }
 }
-console.log(todoObject);
 const sortSelector = makeElements("select", { className: "sortSelector" });
 //en placeholder sort option som bare forklarer hva select gjør.
 const sortExplainOption = makeElements("option", {
@@ -189,7 +187,6 @@ function displayTodo(todo) {
     textContent: "COMPLETE",
     className: "completeBtn",
   });
-  console.log(todo.complete);
   if (todo.complete === true) {
     completeBtn.disabled = true;
     completeBtn.textContent = "COMPLETED";
