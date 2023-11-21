@@ -269,10 +269,10 @@ function sortArray(array, direction) {
   } else if (direction === "Urgency") {
     //sorterer basert på scorevalue høy-lav
     return array.sort((a, b) => {
-      if (todoObject[a].difficulty < todoObject[b].difficulty) {
+      if (todoObject[a].difficulty > todoObject[b].difficulty) {
         return 1;
       }
-      if (todoObject[a].difficulty > todoObject[b].difficulty) {
+      if (todoObject[a].difficulty < todoObject[b].difficulty) {
         return -1;
       }
       return 0;
