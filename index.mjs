@@ -12,13 +12,13 @@ så importere alt inn i index.js og style.css. fix ferdig arbeid! */
 const todoInput = makeElements("input", {
   type: "text",
   id: "todoInput",
-  placeholder: "Enter your to-do item",
+  placeholder: "Enter your to-do task here",
 });
 
 //label for inputfield
 const inputLabel = makeElements("label", {
   className: "inputLabel",
-  textContent: "Enter your to-do item:",
+  textContent: "To-do:",
 });
 //setAttribute for å jobbe rundt "for" reserved keyword.
 inputLabel.setAttribute("for", "todoInput");
@@ -30,7 +30,7 @@ const submitBtn = makeElements("button", {
 
 const selectorLabel = makeElements("label", {
   className: "selectorLabel",
-  textContent: "How fast must it be done?",
+  textContent: "Schedule for:",
 });
 //setAttribute for å jobbe rundt "for" reserved keyword.
 selectorLabel.setAttribute("for", "valueSelector");
@@ -180,7 +180,7 @@ function displayTodo(todo) {
     className: "listContent",
   });
   const listUrgency = makeElements("p", {
-    textContent: ` - Done: ${todo.difficultyText}`,
+    textContent: `${todo.difficultyText}`,
     className: "listUrgency",
   });
   listItem.append(listContent, listUrgency);

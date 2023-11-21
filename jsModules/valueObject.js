@@ -1,8 +1,8 @@
 const valueObject = {
-  during_this_month: 1,
-  during_this_week: 10,
-  today: 50,
-  ASAP: 100,
+  ASAP: 1,
+  Today: 10,
+  This_Week: 50,
+  This_Month: 100,
 };
 
 export { valueObject };
