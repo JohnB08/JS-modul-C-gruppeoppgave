@@ -269,11 +269,23 @@ sortSelector.addEventListener("change", () => {
 const achievementDiary = makeElements("button", {
   className: "achievementTasks",
   textContent: "Achievements",
-
-})
-document.body.appendChild(achievementDiary)
+});
+document.body.appendChild(achievementDiary);
 
 const achievementsComplete = {
-  
-
+  firstToDo: {
+    name: "Complete your first todo!",
+    complete: false,
+    icon: "image/medal.png",
+  },
+  reach500: {
+    name: "You have achieved 500 points",
+    complete: false,
+  },
+};
+achievementsComplete.firstToDo.complete = true;
+if (firstToDo.complete === false) {
+  return;
+} else {
+  document.body.appendChild(achievementComplete.firstToDo.icon);
 }
