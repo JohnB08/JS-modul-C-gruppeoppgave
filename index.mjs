@@ -80,6 +80,7 @@ submitBtn.onclick = () => {
  * Viser feil til bruker hvis feltet er tomt når knappen trykkes.
  */
 function addToList() {
+  console.log(typeof newDate);
   const inputValue = todoInput.value.trim();
   const difficulty = parseInt(valueSelector.value);
   const difficultyText = Object.keys(valueObject)
@@ -92,7 +93,7 @@ function addToList() {
       text: inputValue,
       difficulty: difficulty,
       difficultyText: difficultyText,
-      dateObject: new Date(Date.now()),
+      dateObject: new Date().getTime(),
       complete: false,
     };
     inputLabel.classList.remove("errorMessage");
@@ -104,7 +105,7 @@ function addToList() {
     todoInput.classList.add("redPlaceHolder");
   }
 }
-
+console.log(todoObject);
 const sortSelector = makeElements("select", { className: "sortSelector" });
 //en placeholder sort option som bare forklarer hva select gjør.
 const sortExplainOption = makeElements("option", {
@@ -192,6 +193,11 @@ function displayTodo(todo) {
   if (todo.complete === true) {
     completeBtn.disabled = true;
     completeBtn.textContent = "COMPLETED";
+    listUrgency.textContent = `Completed: ${new Date(
+      parseInt(todo.dateObject)
+    ).getDate()} / ${
+      new Date(parseInt(todo.dateObject)).getMonth() + 1
+    } / ${new Date(parseInt(todo.dateObject)).getFullYear()}`;
     listItem.appendChild(completeBtn);
     completedList.appendChild(listItem);
   } else {
@@ -209,13 +215,17 @@ function displayTodo(todo) {
   completeBtn.onclick = () => {
     if (!todo.complete) {
       todo.complete = true;
-
       console.log(typeof todo.difficulty);
       addPoints(todo);
       listItem.remove();
       completedList.appendChild(listItem);
       completeBtn.disabled = true;
       completeBtn.textContent = "COMPLETED";
+      listUrgency.textContent = `Completed: ${new Date(
+        parseInt(todo.dateObject)
+      ).getDate()} / ${
+        new Date(parseInt(todo.dateObject)).getMonth() + 1
+      } / ${new Date(parseInt(todo.dateObject)).getFullYear()}`;
       saveToLocalStorage();
     }
   };
