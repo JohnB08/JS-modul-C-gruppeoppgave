@@ -132,3 +132,19 @@ body {
     font-size: 20px;
   }
 }
+.achievementTasks{
+  background-color: rgb(12, 142, 25);
+  color: rgb(242, 241, 241);
+  padding: 0.75em 1.5em;
+  font-weight: bold;
+  font-size: inherit;
+  border: none;
+  border-radius: 0.5em;
+  letter-spacing: 0.05em;
+  transition: 300ms;
+  margin: auto;
+}
+.achievementTasks:hover{
+  background-color: rgb(242, 241, 241);
+  color: rgb(12, 142, 25);
+}

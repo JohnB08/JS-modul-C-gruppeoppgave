@@ -128,8 +128,41 @@ sortSelectorValues.forEach((option) => {
   sortSelector.appendChild(sortOption);
 });
 sortContainer.appendChild(sortSelector);
+const achievementsComplete = {
+  firstToDo: {
+    name: "Complete your first todo!",
+    complete: false,
+    icon: "./image/medal.png",
+    htmlImage: makeElements("img", {
+      src: "./image/medal.png",
+    }),
+  },
+  reach500: {
+    name: "You have achieved 500 points",
+    complete: false,
+  },
+};
+const achievementChecker = () => {
+  if (achievementsComplete.firstToDo.complete === false) {
+    return;
+  } else if (achievementsComplete.firstToDo.complete === true) {
+    document.body.appendChild(achievementsComplete.firstToDo.htmlImage);
+  }
+};
 /* sortContainer.appendChild(sortBtn); */
 //updatet displayTodo function for å adde remove knapp, addet completed knapp
+//summerer opp poeng
+const addPoints = (todo) => {
+  if (scoreSum === 0) {
+    achievementsComplete.firstToDo.complete = true;
+  }
+  if (scoreSum === 500) {
+    achievementsComplete.reach500.complete = true;
+  }
+  scoreSum += todo.difficulty;
+  achievementChecker();
+  totalSum.textContent = `your total score is ${scoreSum}`;
+};
 
 /**
  * funksjon som tar inn et objekt, og lager li basert på objektet.
@@ -175,9 +208,9 @@ function displayTodo(todo) {
   completeBtn.onclick = () => {
     if (!todo.complete) {
       todo.complete = true;
-      scoreSum += todo.difficulty;
+
       console.log(typeof todo.difficulty);
-      addPoints();
+      addPoints(todo);
       listItem.remove();
       completedList.appendChild(listItem);
       completeBtn.disabled = true;
@@ -193,11 +226,6 @@ function displayTodo(todo) {
     saveToLocalStorage();
   };
 }
-
-//summerer opp poeng
-const addPoints = () => {
-  totalSum.textContent = `your total score is ${scoreSum}`;
-};
 
 document.addEventListener("keydown", (event) => {
   if (event.code != "Enter") return;
@@ -288,9 +316,7 @@ const saveToLocalStorage = () => {
     todos: todoObject,
     score: scoreSum,
   };
-  console.log("Saver Local Storage:", dataToSave);
   localStorage.setItem("todoData", JSON.stringify(dataToSave));
-  console.log(dataToSave);
 };
 
 //kanskje bedre med ?? operator?
@@ -305,3 +331,13 @@ function loadFromLocalStorage() {
     displayTodo(todoObject[todo]);
   });
 }
+//achievement reward icon
+const achievementDiary = makeElements("button", {
+  className: "achievementTasks",
+  textContent: "Achievements",
+});
+document.body.appendChild(achievementDiary);
+
+totalSum.addEventListener("change", (event) => {
+  console.log(event);
+});
