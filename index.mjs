@@ -108,7 +108,7 @@ function addToList() {
 const sortSelector = makeElements("select", { className: "sortSelector" });
 //en placeholder sort option som bare forklarer hva select gjør.
 const sortExplainOption = makeElements("option", {
-  textContent: "--Sort Options--",
+  textContent: "Sort Options",
   selected: true,
   disabled: true,
 });
