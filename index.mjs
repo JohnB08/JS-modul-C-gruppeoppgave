@@ -12,13 +12,13 @@ så importere alt inn i index.js og style.css. fix ferdig arbeid! */
 const todoInput = makeElements("input", {
   type: "text",
   id: "todoInput",
-  placeholder: "Enter your to-do item",
+  placeholder: "Enter your to-do task here",
 });
 
 //label for inputfield
 const inputLabel = makeElements("label", {
   className: "inputLabel",
-  textContent: "Enter your to-do item:",
+  textContent: "To-do:",
 });
 //setAttribute for å jobbe rundt "for" reserved keyword.
 inputLabel.setAttribute("for", "todoInput");
@@ -30,7 +30,7 @@ const submitBtn = makeElements("button", {
 
 const selectorLabel = makeElements("label", {
   className: "selectorLabel",
-  textContent: "How fast must it be done?",
+  textContent: "Schedule for:",
 });
 //setAttribute for å jobbe rundt "for" reserved keyword.
 selectorLabel.setAttribute("for", "valueSelector");
@@ -107,7 +107,7 @@ function addToList() {
 const sortSelector = makeElements("select", { className: "sortSelector" });
 //en placeholder sort option som bare forklarer hva select gjør.
 const sortExplainOption = makeElements("option", {
-  textContent: "--Sort Options--",
+  textContent: "Sort Options",
   selected: true,
   disabled: true,
 });
@@ -179,7 +179,7 @@ function displayTodo(todo) {
     className: "listContent",
   });
   const listUrgency = makeElements("p", {
-    textContent: ` - Done: ${todo.difficultyText}`,
+    textContent: `${todo.difficultyText}`,
     className: "listUrgency",
   });
   listItem.append(listContent, listUrgency);
@@ -235,6 +235,8 @@ function displayTodo(todo) {
       saveToLocalStorage();
     }
   };
+
+  
   //fjerner fra både array og display
   removeBtn.onclick = () => {
     delete todoObject[todo.text];
@@ -285,10 +287,10 @@ function sortArray(array, direction) {
   } else if (direction === "Urgency") {
     //sorterer basert på scorevalue høy-lav
     return array.sort((a, b) => {
-      if (todoObject[a].difficulty < todoObject[b].difficulty) {
+      if (todoObject[a].difficulty > todoObject[b].difficulty) {
         return 1;
       }
-      if (todoObject[a].difficulty > todoObject[b].difficulty) {
+      if (todoObject[a].difficulty < todoObject[b].difficulty) {
         return -1;
       }
       return 0;
