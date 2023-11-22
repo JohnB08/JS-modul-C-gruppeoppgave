@@ -191,10 +191,13 @@ function displayTodo(todo) {
     completeBtn.disabled = true;
     completeBtn.textContent = "COMPLETED";
     listUrgency.textContent = `Completed: ${new Date(
-      parseInt(todo.dateObject)
-    ).getDate()} / ${
-      new Date(parseInt(todo.dateObject)).getMonth() + 1
-    } / ${new Date(parseInt(todo.dateObject)).getFullYear()}`;
+      todo.dateObject
+    ).toLocaleDateString("en-UK", {
+      weekday: "long",
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    })}`;
     listItem.appendChild(completeBtn);
     completedList.appendChild(listItem);
   } else {
@@ -217,12 +220,18 @@ function displayTodo(todo) {
       listItem.remove();
       completedList.appendChild(listItem);
       completeBtn.disabled = true;
+      //oppdaterer Date() i dateObject.
+      todo.dateObject = new Date();
       completeBtn.textContent = "COMPLETED";
+      //bruker toLocaleDateString for å printe en datostring.
       listUrgency.textContent = `Completed: ${new Date(
-        parseInt(todo.dateObject)
-      ).getDate()} / ${
-        new Date(parseInt(todo.dateObject)).getMonth() + 1
-      } / ${new Date(parseInt(todo.dateObject)).getFullYear()}`;
+        todo.dateObject
+      ).toLocaleDateString("en-UK", {
+        weekday: "long",
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })}`;
       saveToLocalStorage();
     }
   };
