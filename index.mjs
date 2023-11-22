@@ -229,6 +229,8 @@ function displayTodo(todo) {
       saveToLocalStorage();
     }
   };
+
+  
   //fjerner fra både array og display
   removeBtn.onclick = () => {
     delete todoObject[todo.text];
