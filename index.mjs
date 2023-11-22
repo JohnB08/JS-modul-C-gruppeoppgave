@@ -220,8 +220,10 @@ function displayTodo(todo) {
       listItem.remove();
       completedList.appendChild(listItem);
       completeBtn.disabled = true;
+      //oppdaterer Date() i dateObject.
       todo.dateObject = new Date();
       completeBtn.textContent = "COMPLETED";
+      //bruker toLocaleDateString for å printe en datostring.
       listUrgency.textContent = `Completed: ${new Date(
         todo.dateObject
       ).toLocaleDateString("en-UK", {
