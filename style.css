@@ -109,6 +109,7 @@ body {
 #todoList .listItem .listUrgency,
 #completedList .listItem .listUrgency {
   font-weight: bold;
+  font-size: 0.9rem
 }
 
 .removeBtn {

@@ -192,9 +192,12 @@ function displayTodo(todo) {
     completeBtn.textContent = "COMPLETED";
     listUrgency.textContent = `Completed: ${new Date(
       parseInt(todo.dateObject)
-    ).getDate()} / ${
-      new Date(parseInt(todo.dateObject)).getMonth() + 1
-    } / ${new Date(parseInt(todo.dateObject)).getFullYear()}`;
+    ).toLocaleDateString("en-UK", {
+      weekday: "long",
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    })}`;
     listItem.appendChild(completeBtn);
     completedList.appendChild(listItem);
   } else {
@@ -220,9 +223,7 @@ function displayTodo(todo) {
       completeBtn.textContent = "COMPLETED";
       listUrgency.textContent = `Completed: ${new Date(
         parseInt(todo.dateObject)
-      ).getDate()} / ${
-        new Date(parseInt(todo.dateObject)).getMonth() + 1
-      } / ${new Date(parseInt(todo.dateObject)).getFullYear()}`;
+      ).toLocaleDateTime("en-UK", { weekday: "long" })}`;
       saveToLocalStorage();
     }
   };
