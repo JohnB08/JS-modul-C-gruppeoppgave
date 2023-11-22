@@ -191,7 +191,7 @@ function displayTodo(todo) {
     completeBtn.disabled = true;
     completeBtn.textContent = "COMPLETED";
     listUrgency.textContent = `Completed: ${new Date(
-      parseInt(todo.dateObject)
+      todo.dateObject
     ).toLocaleDateString("en-UK", {
       weekday: "long",
       day: "numeric",
@@ -220,10 +220,16 @@ function displayTodo(todo) {
       listItem.remove();
       completedList.appendChild(listItem);
       completeBtn.disabled = true;
+      todo.dateObject = new Date();
       completeBtn.textContent = "COMPLETED";
       listUrgency.textContent = `Completed: ${new Date(
-        parseInt(todo.dateObject)
-      ).toLocaleDateTime("en-UK", { weekday: "long" })}`;
+        todo.dateObject
+      ).toLocaleDateString("en-UK", {
+        weekday: "long",
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })}`;
       saveToLocalStorage();
     }
   };
