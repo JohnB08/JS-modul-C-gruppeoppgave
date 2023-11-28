@@ -8,6 +8,7 @@ import { valueObject } from "./jsModules/valueObject.js";
 kan vi fordele oppgavene inn i forskjellige JS moduler og CSS komponenter,
 så importere alt inn i index.js og style.css. fix ferdig arbeid! */
 // Create an input field for the to-do list
+// Test :P
 
 const todoInput = makeElements("input", {
   type: "text",
